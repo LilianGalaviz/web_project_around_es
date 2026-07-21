@@ -49,11 +49,11 @@ const initialCards = [
   },
 ];
 
-function openModal(modal) {
+function openModal(popup) {
   modal.classList.add("popup_is-opened");
 }
 
-function closeModal(modal) {
+function closeModal(popup) {
   modal.classList.remove("popup_is-opened");
 }
 
