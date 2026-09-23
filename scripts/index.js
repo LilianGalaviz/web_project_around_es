@@ -74,72 +74,6 @@ function closeModal(popup) {
   document.removeEventListener("keydown", handleEscClose);
 }
 
-function showInputError(formElement, inputElement) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
-  inputElement.classList.add("popup__input_type_error");
-  errorElement.textContent = inputElement.validationMessage;
-  errorElement.classList.add("popup__input-error_active");
-}
-
-function hideInputError(formElement, inputElement) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
-  inputElement.classList.remove("popup__input_type_error");
-  errorElement.textContent = "";
-  errorElement.classList.remove("popup__input-error_active");
-}
-
-function checkInputValidity(formElement, inputElement) {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-}
-
-function hasInvalidInput(inputList) {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-}
-
-function toggleButtonState(inputList, buttonElement) {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.disabled = true;
-    buttonElement.classList.add("popup__button_disabled");
-  } else {
-    buttonElement.disabled = false;
-    buttonElement.classList.remove("popup__button_disabled");
-  }
-}
-
-profileFormInputs.forEach((inputElement) => {
-  inputElement.addEventListener("input", function () {
-    checkInputValidity(formElement, inputElement);
-    toggleButtonState(profileFormInputs, profileSubmitButton);
-  });
-});
-
-toggleButtonState(profileFormInputs, profileSubmitButton);
-
-newCardFormInputs.forEach((inputElement) => {
-  inputElement.addEventListener("input", function () {
-    checkInputValidity(newCardForm, inputElement);
-    toggleButtonState(newCardFormInputs, newCardSubmitButton);
-  });
-});
-
-toggleButtonState(newCardFormInputs, newCardSubmitButton);
-
-function resetValidation(formElement, inputList, buttonElement) {
-  inputList.forEach((inputElement) => {
-    hideInputError(formElement, inputElement);
-  });
-
-  toggleButtonState(inputList, buttonElement);
-}
-
 // EDITAR PERFIL
 
 function fillProfileForm() {
@@ -294,3 +228,5 @@ function handleImageClick(name, link) {
 imagePopupClose.addEventListener("click", function () {
   closeModal(imagePopup);
 });
+
+enableValidation();
