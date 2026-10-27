@@ -79,7 +79,10 @@
               minlength="2"
               maxlength="40"
             />
-            <span class="popup__input-error profile-name-input-error"></span>
+            <span
+              class="popup__input-error"
+              id="profile-name-input-error"
+            ></span>
             <input
               class="popup__input popup__input_type_description"
               id="profile-description-input"
@@ -91,7 +94,8 @@
               maxlength="200"
             />
             <span
-              class="popup__input-error profile-description-input-error"
+              class="popup__input-error"
+              id="profile-description-input-error"
             ></span>
             <button class="button popup__button" type="submit">Guardar</button>
           </form>
@@ -116,7 +120,7 @@
               maxlength="30"
               type="text"
             />
-            <span class="popup__input-error card-name-input-error"></span>
+            <span class="popup__input-error" id="card-name-input-error"></span>
             <input
               class="popup__input popup__input_type_url"
               id="card-link-input"
@@ -125,7 +129,7 @@
               required
               type="url"
             />
-            <span class="popup__input-error card-link-input-error"></span>
+            <span class="popup__input-error" id="card-link-input-error"></span>
             <button class="button popup__button" type="submit">Crear</button>
           </form>
         </div>
@@ -142,7 +146,6 @@
         </div>
       </div>
     </div>
-    <script src="scripts/validate.js"></script>
-    <script src="scripts/index.js"></script>
+    <script type="module" src="scripts/index.js"></script>
   </body>
 </html>
