@@ -116,6 +116,7 @@ initialCards.forEach(function (card) {
 
 profileAddButton.addEventListener("click", function () {
   newCardForm.reset();
+  cardValidator.resetValidation();
   openModal(newCardPopup);
 });
 
@@ -134,6 +135,7 @@ function handleCardFormSubmit(evt) {
   renderCard(cardData, cardsList, true);
 
   newCardForm.reset();
+  cardValidator.resetValidation();
 
   closeModal(newCardPopup);
 }
