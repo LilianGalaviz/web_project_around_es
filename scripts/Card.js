@@ -1,10 +1,9 @@
-import { openModal } from "./utils.js";
-
 class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   #getTemplate() {
@@ -23,7 +22,7 @@ class Card {
     });
 
     this._cardImage.addEventListener("click", () => {
-      this.#handleImageClick();
+      this._handleCardClick(this._name, this._link);
     });
   }
 
@@ -35,18 +34,6 @@ class Card {
     this._element.remove();
   }
 
-  #handleImageClick() {
-    const imagePopup = document.querySelector("#image-popup");
-    const popupImage = imagePopup.querySelector(".popup__image");
-    const popupCaption = imagePopup.querySelector(".popup__caption");
-
-    popupImage.src = this._link;
-    popupImage.alt = this._name;
-    popupCaption.textContent = this._name;
-
-    openModal(imagePopup);
-  }
-
   generateCard() {
     this._element = this.#getTemplate();
 
@@ -55,7 +42,7 @@ class Card {
     this._deleteButton = this._element.querySelector(".card__delete-button");
 
     const cardTitle = this._element.querySelector(".card__title");
-
+    console.log("Nombre de la tarjeta:", this._name);
     cardTitle.textContent = this._name;
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
